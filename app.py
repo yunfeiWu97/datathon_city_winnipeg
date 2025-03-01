@@ -14,7 +14,7 @@ import os
 import time
 
 # Import functions from solution.py
-from solution import create_traffic_prediction_dashboard, get_congestion_level, create_traffic_map, get_color_for_score
+from solution import create_traffic_prediction_dashboard, get_congestion_level, create_traffic_map, get_color_for_score, create_traffic_map_only
 
 app = Flask(__name__, static_folder='.')
 
@@ -37,32 +37,25 @@ def predict():
     response_data = {"steps": []}
     
     # Step 1: Initialize
-    response_data["steps"].append({"message": "Initializing TrafficSense AI..."})
-    time.sleep(0.8)  # Simulate processing time
+    response_data["steps"].append({"message": "Initializing Venom AI..."})
     
     # Step 2: Load data
     response_data["steps"].append({"message": "Loading historical traffic patterns..."})
-    time.sleep(1.0)
     
     # Step 3: Analyze weather
     response_data["steps"].append({"message": "Analyzing weather forecasts..."})
-    time.sleep(0.8)
     
     # Step 4: Process road data
     response_data["steps"].append({"message": "Processing road sensor data..."})
-    time.sleep(0.8)
     
     # Step 5: Check events
     response_data["steps"].append({"message": "Checking scheduled events..."})
-    time.sleep(0.8)
     
     # Step 6: Run AI model
-    response_data["steps"].append({"message": "Running DeepTraffic GPT-7 neural network..."})
-    time.sleep(1.2)
+    response_data["steps"].append({"message": "Running DeepSeek V3 neural network..."})
     
     # Step 7: Generate maps
     response_data["steps"].append({"message": "Generating prediction maps..."})
-    time.sleep(0.8)
     
     # Actually run the prediction function
     create_traffic_prediction_dashboard()

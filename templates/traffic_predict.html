@@ -8,16 +8,34 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #121212;
+            background-image: url('/venom.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #e0e0e0;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Add an overlay to make text more readable against the background image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);  /* Dark overlay with 85% opacity */
+            z-index: -1;
         }
         
         header {
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 0.7);  /* Semi-transparent header */
             color: #ffffff;
             padding: 20px;
             text-align: center;
@@ -27,13 +45,25 @@
         h1 {
             margin: 0;
             font-size: 28px;
-            color: #3a9bdc;
+            color: #00cc66; /* Venom green color */
+            text-shadow: 0 0 10px rgba(0, 204, 102, 0.5); /* Green glow effect */
         }
         
         .subtitle {
             color: #bbbbbb;
             margin: 10px 0 0 0;
             font-size: 16px;
+        }
+        
+        /* Add a Venom-themed accent at the top of the page */
+        header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -2px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00cc66, transparent);
         }
         
         .container {
@@ -47,15 +77,16 @@
         }
         
         .prediction-panel {
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 0.85);
             border-radius: 8px;
             width: 100%;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
         
         .prediction-form {
@@ -89,7 +120,7 @@
         }
         
         .predict-button {
-            background-color: #3a9bdc;
+            background-color: #00cc66; /* Venom green color */
             color: white;
             border: none;
             padding: 12px 30px;
@@ -98,11 +129,13 @@
             font-size: 16px;
             font-weight: bold;
             margin-top: 20px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(0, 204, 102, 0.5); /* Green glow effect */
         }
         
         .predict-button:hover {
-            background-color: #2d7eb6;
+            background-color: #00ff80; /* Lighter green on hover */
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.7); /* Enhanced glow on hover */
         }
         
         .results-container {
@@ -113,8 +146,9 @@
         }
         
         .results-heading {
-            color: #3a9bdc;
+            color: #00cc66; /* Venom green color */
             margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(0, 204, 102, 0.3); /* Subtle green glow */
         }
         
         .results-grid {
@@ -139,12 +173,13 @@
         
         .loader {
             border: 16px solid #2a2a2a;
-            border-top: 16px solid #3a9bdc;
+            border-top: 16px solid #00cc66; /* Venom green color */
             border-radius: 50%;
             width: 120px;
             height: 120px;
             animation: spin 2s linear infinite;
             margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 204, 102, 0.3); /* Green glow effect */
         }
         
         .loading-text {
@@ -175,7 +210,7 @@
         
         .loading-step.completed {
             opacity: 1;
-            background-color: #1a3a50;
+            background-color: rgba(0, 120, 60, 0.5); /* Semi-transparent green */
         }
         
         .results-chart {
@@ -195,16 +230,18 @@
         }
         
         .insights-panel {
-            background-color: #272727;
+            background-color: rgba(39, 39, 39, 0.85);
             padding: 20px;
             border-radius: 8px;
             margin-top: 20px;
             width: 100%;
+            backdrop-filter: blur(3px);
         }
         
         .insights-heading {
-            color: #3a9bdc;
+            color: #00cc66; /* Venom green color */
             margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 204, 102, 0.3); /* Subtle green glow */
         }
         
         .insight-item {
@@ -217,16 +254,17 @@
             content: "•";
             position: absolute;
             left: 0;
-            color: #3a9bdc;
+            color: #00cc66; /* Venom green color */
         }
         
         footer {
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 0.7); /* Semi-transparent footer */
             color: #777777;
             text-align: center;
             padding: 15px;
             margin-top: auto;
             font-size: 14px;
+            backdrop-filter: blur(5px);
         }
         
         @keyframes spin {
@@ -237,9 +275,10 @@
         .prediction-details {
             margin-top: 15px;
             padding: 15px;
-            background-color: #272727;
+            background-color: rgba(39, 39, 39, 0.85);
             border-radius: 8px;
             width: 100%;
+            backdrop-filter: blur(3px);
         }
         
         .prediction-stat {
@@ -273,18 +312,112 @@
         .model-info {
             display: flex;
             justify-content: space-between;
-            background-color: #272727;
+            background-color: rgba(39, 39, 39, 0.85);
             padding: 10px 20px;
             border-radius: 8px;
             margin-top: 15px;
             font-size: 14px;
             color: #888888;
+            backdrop-filter: blur(3px);
+        }
+        
+        /* Styling for results */
+        #results-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        #results-chart {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+        
+        #map-container {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        #map-link {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #00cc66; /* Venom green color */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            box-shadow: 0 0 10px rgba(0, 204, 102, 0.3); /* Green glow effect */
+        }
+        
+        #map-link:hover {
+            background-color: #00ff80; /* Lighter green on hover */
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.5); /* Enhanced glow on hover */
+        }
+        
+        .text-summary-panel {
+            background-color: rgba(39, 39, 39, 0.85);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 100%;
+            backdrop-filter: blur(3px);
+        }
+        
+        .summary-heading {
+            color: #00cc66; /* Venom green color */
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 204, 102, 0.3); /* Subtle green glow */
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .summary-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .summary-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #00cc66; /* Venom green color */
+        }
+        
+        .map-button {
+            padding: 10px 20px;
+            background-color: #00cc66; /* Venom green color */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            box-shadow: 0 0 10px rgba(0, 204, 102, 0.3); /* Green glow effect */
+        }
+        
+        .map-button:hover {
+            background-color: #00ff80; /* Lighter green on hover */
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.5); /* Enhanced glow on hover */
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>TrafficSense AI</h1>
+        <h1>Venom AI</h1>
         <p class="subtitle">Advanced Traffic Prediction for Winnipeg</p>
     </header>
     
@@ -327,7 +460,7 @@
                     <div class="loading-step" id="step2">Analyzing weather forecasts</div>
                     <div class="loading-step" id="step3">Processing road sensor data</div>
                     <div class="loading-step" id="step4">Checking scheduled events</div>
-                    <div class="loading-step" id="step5">Running DeepTraffic GPT-7 neural network</div>
+                    <div class="loading-step" id="step5">Running  DeepSeek V3 neural network</div>
                     <div class="loading-step" id="step6">Generating prediction maps</div>
                 </div>
             </div>
@@ -336,17 +469,33 @@
                 <h2 class="results-heading">Traffic Prediction Results</h2>
                 
                 <div class="model-info">
-                    <span>MODEL: DeepTraffic GPT-7</span>
+                    <span>MODEL: DeepSeek V3 </span>
                     <span>ACCURACY: 94.7%</span>
                     <span>LAST UPDATE: <span id="update-time"></span></span>
                 </div>
                 
-                <img id="results-chart" class="results-chart" src="winnipeg_traffic_prediction.png" alt="Traffic prediction visualization">
-                
-                <div style="margin-top: 20px; text-align: center;">
-                    <a href="winnipeg_traffic_prediction_map.html" target="_blank" style="padding: 10px 20px; background-color: #3a9bdc; color: white; text-decoration: none; border-radius: 4px; margin-top: 20px; display: inline-block;">
-                        View Interactive Traffic Map
-                    </a>
+                <div class="text-summary-panel">
+                    <h3 class="summary-heading">Traffic Summary</h3>
+                    <p>Our AI model has analyzed traffic patterns across Winnipeg's major roadways and predicted congestion levels for the next three days.</p>
+                    
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <h4>Highest Congestion Roads</h4>
+                            <ul>
+                                <li>Bishop Grandin Boulevard (71.4/100)</li>
+                                <li>Regent Avenue (68.8/100)</li>
+                                <li>St. Mary's Road (58.7/100)</li>
+                            </ul>
+                        </div>
+                        <div class="summary-item">
+                            <h4>Lowest Congestion Roads</h4>
+                            <ul>
+                                <li>Kenaston Boulevard (45.8/100)</li>
+                                <li>Portage Avenue (46.8/100)</li>
+                                <li>Fermor Avenue (49.8/100)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="insights-panel">
@@ -402,7 +551,7 @@
     </div>
     
     <footer>
-        © 2024 TrafficSense AI | Powered by DeepTraffic GPT-7 | This is a simulation for demonstration purposes only
+        © 2024 Venom AI | Powered by DeepSeek V3 | This is a simulation for demonstration purposes only
     </footer>
     
     <script>
@@ -411,7 +560,6 @@
             const loadingContainer = document.getElementById('loading-container');
             const resultsContainer = document.getElementById('results-container');
             const loadingSteps = document.querySelectorAll('.loading-step');
-            const resultsChart = document.getElementById('results-chart');
             const updateTime = document.getElementById('update-time');
             const day1Date = document.getElementById('day1-date');
             const day2Date = document.getElementById('day2-date');
@@ -437,7 +585,12 @@
             function runPrediction() {
                 // Show loading container
                 loadingContainer.style.display = 'flex';
+                
+                // Disable button and change text/appearance
                 predictButton.disabled = true;
+                predictButton.innerHTML = 'Processing...';
+                predictButton.style.backgroundColor = '#666666';
+                predictButton.style.cursor = 'not-allowed';
                 
                 // Reset loading steps
                 loadingSteps.forEach(step => {
@@ -470,13 +623,25 @@
                     } else {
                         // Handle error
                         loadingText.textContent = "Error: " + data.message;
+                        // Reset button
+                        resetButton();
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     loadingText.textContent = "Error: Could not connect to the prediction service.";
-                    predictButton.disabled = false;
+                    // Reset button
+                    resetButton();
                 });
+            }
+            
+            // Function to reset the button to its original state
+            function resetButton() {
+                predictButton.disabled = false;
+                predictButton.innerHTML = 'Predict Traffic Patterns';
+                predictButton.style.backgroundColor = '#00cc66'; // Venom green color
+                predictButton.style.cursor = 'pointer';
+                predictButton.style.boxShadow = '0 0 10px rgba(0, 204, 102, 0.5)'; // Restore glow effect
             }
             
             // Process steps with animation
@@ -521,13 +686,13 @@
                 loadingContainer.style.display = 'none';
                 resultsContainer.style.display = 'flex';
                 
-                // If the image has been updated, force a refresh by adding a timestamp
-                resultsChart.src = `winnipeg_traffic_prediction.png?t=${new Date().getTime()}`;
+                // No image loading logic needed anymore
                 
                 // Update the timestamp
                 updateTime.textContent = new Date().toLocaleString();
                 
-                predictButton.disabled = false;
+                // Reset button to original state
+                resetButton();
             }
             
             // Event listener for the predict button
