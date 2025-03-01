@@ -1,7 +1,7 @@
 import pandas as pd
 
 # URL of the dataset with limit parameter to get 10000 rows
-url = "https://data.winnipeg.ca/resource/gp3k-am4u.csv?$limit=70000"
+url = "https://data.winnipeg.ca/resource/gp3k-am4u.csv?$limit=1000000"
 
 # Load the data
 df = pd.read_csv(url)
